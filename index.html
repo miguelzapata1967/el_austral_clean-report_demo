@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Austral Consultant Demo · Clean-up &amp; Report</title>
+<meta name="description" content="El Austral Consultant Demo: clean your sales data and get a clear report.">
+<link rel="icon" href="demo_icon.ico">
+<style>
+  :root { --burgundy:#78182e; --rose:#aa2d48; --ink:#2a1a1f; --paper:#faf6f5; --red:#c8102e; --navy:#1d3a7a; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--paper); color:var(--ink); font-family:Georgia,"Times New Roman",serif; line-height:1.6; }
+  header { background:linear-gradient(90deg,#f3c3cf 0%,#f8d6d6 50%,#fde4d4 100%); border-bottom:1px solid rgba(120,24,46,.15);
+           padding:14px 5vw; display:flex; align-items:center; gap:16px; }
+  header img { width:56px; height:56px; border-radius:8px; }
+  header .name { letter-spacing:.12em; font-size:1.3rem; line-height:1.1; }
+  header .name small { display:block; font:400 .62rem Arial,sans-serif; letter-spacing:.35em; }
+  main { max-width:860px; margin:0 auto; padding:2.5rem 1.25rem 3rem; }
+  h1 { text-align:center; font-size:2.2rem; margin:.2rem 0 .4rem; }
+  .lead { text-align:center; font-size:1.15rem; margin:0 auto 2rem; max-width:640px; }
+  .hero { text-align:center; margin-bottom:2rem; }
+  .hero img { width:180px; height:180px; border-radius:14px; box-shadow:0 6px 24px rgba(29,58,122,.18); }
+  .btn { display:inline-block; margin-top:1.4rem; padding:.9rem 2.2rem; border-radius:999px; background:var(--burgundy);
+         color:#fff; font:700 1rem Arial,sans-serif; letter-spacing:.08em; text-decoration:none; border:0; cursor:pointer; }
+  .btn:hover { background:var(--rose); }
+  .btn[aria-disabled="true"] { opacity:.45; pointer-events:none; }
+  .notice { margin:1rem auto 0; max-width:560px; padding:.8rem 1rem; border-left:4px solid var(--burgundy);
+            background:rgba(120,24,46,.06); font-size:.95rem; text-align:left; }
+  .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-top:1.5rem; }
+  @media (max-width:700px) { .grid { grid-template-columns:1fr; } }
+  .card { background:#fff; border:1px solid rgba(120,24,46,.25); border-radius:10px; padding:1.1rem 1.25rem; }
+  .card h3 { margin:0 0 .4rem; color:var(--burgundy); font-size:1.1rem; }
+  .card p { margin:0; font-size:.95rem; }
+  h2 { font-size:1.4rem; margin:2.5rem 0 .6rem; }
+  ol li, ul li { margin-bottom:.4rem; }
+  .limits b { color:var(--burgundy); }
+  footer { background:#5c0b20; color:#fff; text-align:center; padding:1.8rem 1rem; }
+  footer i { display:block; font-size:1.35rem; margin-bottom:.4rem; }
+</style>
+</head>
+<body>
+<header>
+  <img src="demo_icon.png" alt="">
+  <div class="name">EL AUSTRAL<small>CONSULTANT DEMO</small></div>
+</header>
+
+<main>
+  <h1>El Austral Consultant Demo</h1>
+  <p class="lead">Clean-up &amp; Report. Drop in a sales file, and get back clean data, the rows that need fixing, and a clear report. Free while you test it.</p>
+
+  <div class="hero">
+    <img src="demo_icon.png" alt="El Austral Consultant Demo">
+    <br>
+    <a class="btn" id="open" href="#" aria-disabled="true">OPEN THE DEMO APP</a>
+    <p class="notice" id="no-code" hidden><b>Use the personal link from your invitation email.</b>
+      This page needs your private demo code to open the app. If you don't have one, contact El Austral Consultant.</p>
+  </div>
+
+  <div class="grid">
+    <div class="card"><h3>1. Drop your file</h3><p>CSV or Excel, up to 3 databases at a time. Column names are matched for you.</p></div>
+    <div class="card"><h3>2. Fix what's wrong</h3><p>Every mistake is highlighted in black. Fix it on screen, or later.</p></div>
+    <div class="card"><h3>3. Download everything</h3><p>One zip with your raw file, the clean file and the report.</p></div>
+  </div>
+
+  <h2>How the demo works</h2>
+  <ol>
+    <li>Click <b>Open the Demo App</b>.</li>
+    <li>Type a <b>client ID</b> at the top right, one per business you work with: DEMO-001, DEMO-002 and so on. Typing just <b>1</b> also works.</li>
+    <li>Pick a plan, drop the file and click <b>Start clean-up</b>.</li>
+    <li>When it finishes, click <b>Download all files</b> and save the zip, for example on your Desktop.</li>
+  </ol>
+
+  <h2>Demo limits</h2>
+  <ul class="limits">
+    <li><b>100 databases</b> in total for your demo.</li>
+    <li>Client IDs <b>DEMO-001 to DEMO-100</b>.</li>
+    <li>Up to <b>3 databases per client ID</b>.</li>
+    <li>No charge. Prices are shown so you can see what the service costs.</li>
+  </ul>
+
+  <h2>Your data</h2>
+  <p>Every file and every row is fingerprinted, so there is always proof of what was sent and what was delivered.
+     Please test with sample or non-sensitive data.</p>
+</main>
+
+<footer>
+  <i>Insights for a Higher Tomorrow</i>
+  Miguel Zapata, Founder<br>
+  &copy; MMXXVI — El Austral Consultant. All rights reserved.
+</footer>
+
+<script>
+  // The Demo App's address on Streamlit Cloud. Change it here if the app moves.
+  const APP_URL = "https://el-austral-demo.streamlit.app";
+
+  // Testers arrive with their private code: .../?demo=THEIR-CODE
+  const code = new URLSearchParams(location.search).get("demo");
+  const btn = document.getElementById("open");
+  if (code && /^[A-Za-z0-9_-]{8,64}$/.test(code)) {
+    btn.href = APP_URL + "/?demo=" + encodeURIComponent(code) + "&page=new";
+    btn.removeAttribute("aria-disabled");
+  } else {
+    document.getElementById("no-code").hidden = false;
+  }
+</script>
+</body>
+</html>
